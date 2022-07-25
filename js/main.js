@@ -17,6 +17,7 @@ function animate() {
     handleParticles();
     requestAnimationFrame(animate); // create game loop
     angle += 0.12;
+    hue++;
 }
 
 animate();
