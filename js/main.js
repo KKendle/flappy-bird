@@ -15,9 +15,11 @@ function animate() {
     bird.update();
     bird.draw(); // player
     handleParticles();
+    handleObstacles();
     requestAnimationFrame(animate); // create game loop
     angle += 0.12;
     hue++;
+    frame++; // increase frame count;
 }
 
 animate();
