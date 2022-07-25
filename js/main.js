@@ -9,6 +9,7 @@ let hue = 0; // color
 let frame = 0; // frame count for game loop
 let score = 0; // game score
 let gamespeed = 2; // speed of game elements
+let collission = false;
 
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height); // clear canvas between animation
@@ -17,6 +18,9 @@ function animate() {
     bird.update();
     bird.draw(); // player
     handleCollisions();
+    if (collission) {
+        return;
+    }
     requestAnimationFrame(animate); // create game loop
     angle += 0.12;
     hue++;
@@ -50,7 +54,11 @@ function handleCollisions() {
                 bird.y + bird.height < canvas.height)) {
             // collission detected
             ctx.drawImage(bang, bird.x, bird.y, 50, 50);
-            return true;
+            collission = true;
+            ctx.font = '25px Georgia';
+            ctx.fillStyle = 'black';
+            ctx.fillText(`Game Over, your score is ${score}`, 100, canvas.height / 2 - 10);
+            return;
         }
     }
 }
