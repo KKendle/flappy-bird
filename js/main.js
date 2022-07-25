@@ -12,8 +12,22 @@ let gamespeed = 2; // speed of game elements
 
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height); // clear canvas between animation
-    ctx.fillRect(10, 10, 50, 50); // player
+    bird.update();
+    bird.draw(); // player
     requestAnimationFrame(animate); // create game loop
+    angle += 0.12;
 }
 
 animate();
+
+window.addEventListener('keydown', function(event) {
+    if (event.code === 'Space') {
+        spacePressed = true;
+    }
+});
+
+window.addEventListener('keyup', function(event) {
+    if (event.code === 'Space') {
+        spacePressed = false;
+    }
+});
