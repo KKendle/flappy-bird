@@ -14,6 +14,7 @@ function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height); // clear canvas between animation
     bird.update();
     bird.draw(); // player
+    handleParticles();
     requestAnimationFrame(animate); // create game loop
     angle += 0.12;
 }
