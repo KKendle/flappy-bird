@@ -17,6 +17,7 @@ function animate() {
     handleObstacles();
     bird.update();
     bird.draw(); // player
+    displayScore();
     handleCollisions();
     if (collission) {
         return;
@@ -61,4 +62,11 @@ function handleCollisions() {
             return;
         }
     }
+}
+
+function displayScore() {
+    ctx.fillStyle = 'black';
+    ctx.font = '70px Georgia';
+    ctx.strokeText(score, 425, 70);
+    ctx.fillText(score, 425, 70);
 }
