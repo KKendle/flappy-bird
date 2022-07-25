@@ -67,6 +67,6 @@ function handleCollisions() {
 function displayScore() {
     ctx.fillStyle = 'black';
     ctx.font = '70px Georgia';
-    ctx.strokeText(score, 425, 70);
-    ctx.fillText(score, 425, 70);
+    ctx.strokeText(score, 25, 70);
+    ctx.fillText(score, 25, 70);
 }
