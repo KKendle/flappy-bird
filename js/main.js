@@ -12,10 +12,11 @@ let gamespeed = 2; // speed of game elements
 
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height); // clear canvas between animation
-    bird.update();
-    bird.draw(); // player
     handleParticles();
     handleObstacles();
+    bird.update();
+    bird.draw(); // player
+    handleCollisions();
     requestAnimationFrame(animate); // create game loop
     angle += 0.12;
     hue++;
@@ -35,3 +36,21 @@ window.addEventListener('keyup', function(event) {
         spacePressed = false;
     }
 });
+
+const bang = new Image();
+bang.src = 'img/bang.png';
+
+function handleCollisions() {
+    for (let i = 0; i < obstaclesArray.length; i++) {
+        if (bird.x < obstaclesArray[i].x + obstaclesArray[i].width &&
+            bird.x + bird.width > obstaclesArray[i].x &&
+                (bird.y < 0 + obstaclesArray[i].top &&
+                bird.y + bird.height > 0 ||
+                bird.y > canvas.height - obstaclesArray[i].bottom &&
+                bird.y + bird.height < canvas.height)) {
+            // collission detected
+            ctx.drawImage(bang, bird.x, bird.y, 50, 50);
+            return true;
+        }
+    }
+}
